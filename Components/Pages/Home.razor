@@ -1,0 +1,54 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+
+<PageTitle>🔐 Gerador de Senha</PageTitle>
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mediaquerry.css">
+<script src="js/clipboard.js"></script>
+
+<h1 id="gerador">Gerador de Senha</h1>
+
+<main>
+    <span>Tamanho <span id="valor">@comprimento</span> caracteres</span>
+    <input type="range" name="ran" id="ran" min="4" max="25" @bind="comprimento">
+    <button @onclick="Click" id="gerador" class="gerador">Gerar senha</button>
+</main>
+
+<div style="@(mostrarDiv ? "display:block;" : "display:none;")" @onclick="copiarSenha" id="semtela" class="result">
+    <p class="title"><br><div id="password" class="password">@senhaGerada</div></p>
+    <p style="@(mostrarCopia ? "display:block;" : "display:none;")" id="copy">Senha copiada. 🔒</p>
+</div>
+
+@code
+{
+    private int comprimento = 15;
+    private string senhaGerada = "";
+    private bool mostrarDiv = false;
+    private bool mostrarCopia = false;
+
+    private void Click()
+    {
+        string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+        Random rand = new Random();
+        var senha = new char[comprimento];
+        for (int i = 0; i < comprimento; i++)
+        {
+            senha[i] = caracteres[rand.Next(caracteres.Length)];
+
+        }
+
+        senhaGerada = new string(senha);
+        mostrarCopia = false;
+        mostrarDiv = true;
+    }
+
+    private async Task copiarSenha()
+    {
+        mostrarCopia = true;
+        await JSRuntime.InvokeVoidAsync("copyToClipboard", senhaGerada);
+    }
+}
+
