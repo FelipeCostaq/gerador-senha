@@ -10,3 +10,6 @@
   <li>CSS3</li>
   <li>JavaScript</li>
 </ul>
+<h2>Como executar o projeto</h2>
+<p>Para executar o projeto, siga os seguintes passos: </p>
+<p>1. Clone o repositório GitHub</p>
