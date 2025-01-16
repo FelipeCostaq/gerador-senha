@@ -13,7 +13,7 @@
 
 <main>
     <span>Tamanho <span id="valor">@comprimento</span> caracteres</span>
-    <input type="range" name="ran" id="ran" min="4" max="25" @bind="comprimento">
+    <input type="range" name="ran" id="ran" min="4" max="25" @bind="comprimento" @bind:event="oninput">
     <button @onclick="Click" id="gerador" class="gerador">Gerar senha</button>
 </main>
 
