@@ -4,7 +4,7 @@
 <p align="center"><img height="425" width="700" src="https://github.com/FelipeCostaq/Gerador_Senha/blob/master/generator_password.png?raw=true" alt="Imagem do Site Gerador de Senhas"></p>
 <h2>Tecnologias utilizadas</h2>
 <ul>
-  <li>Blazor</li>
+  <li>Blazor Server</li>
   <li>C#</li>
   <li>HTML5</li>
   <li>CSS3</li>
